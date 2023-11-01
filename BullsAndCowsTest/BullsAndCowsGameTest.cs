@@ -123,7 +123,25 @@ namespace BullsAndCowsTest
             //when
             string result = game.Guess(guessNumber);
             //then
-            Assert.Equal("0A2B", result);
+            Assert.Equal("0A4B", result);
+        }
+
+        [Theory]
+        [InlineData("1243")]
+        public void Should_return_2A2B_when_guess_given_all_digit_values_correct_but_partially_position_are_wrong(string guessNumber)
+        {
+            //Given
+            //string guessNumber = "1234";
+            string screatNumber = "1234";
+
+            //var secretGenerator = new SecretGenerator();
+            Mock<SecretGenerator> mockSecretGenerator = new Mock<SecretGenerator>();
+            mockSecretGenerator.Setup(generate => generate.GenerateSecret()).Returns(screatNumber);
+            var game = new BullsAndCowsGame(mockSecretGenerator.Object);
+            //when
+            string result = game.Guess(guessNumber);
+            //then
+            Assert.Equal("2A2B", result);
         }
     }
 }
