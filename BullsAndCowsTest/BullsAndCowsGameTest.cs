@@ -48,5 +48,35 @@ namespace BullsAndCowsTest
 
             Assert.Equal("2A0B", ret);
         }
+
+        [Theory]
+        [InlineData("1562")]
+        public void Should_return_1A1B_when_guess_number_different_secret_number(string guessNumber)
+        {
+            var secretNumber = "1234";
+            // var secretGenerator = new SecretGenerator();
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secretNumber);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+
+            var ret = game.Guess(guessNumber);
+
+            Assert.Equal("1A1B", ret);
+        }
+
+        [Theory]
+        [InlineData("7569")]
+        public void Should_return_0A0B_when_guess_number_different_secret_number(string guessNumber)
+        {
+            var secretNumber = "1234";
+            // var secretGenerator = new SecretGenerator();
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secretNumber);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+
+            var ret = game.Guess(guessNumber);
+
+            Assert.Equal("0A0B", ret);
+        }
     }
 }
