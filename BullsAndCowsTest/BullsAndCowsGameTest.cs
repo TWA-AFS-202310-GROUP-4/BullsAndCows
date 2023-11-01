@@ -31,10 +31,13 @@ namespace BullsAndCowsTest
             Assert.Equal("4A0B", ret);
         }
 
-        [Fact]
-        public void Should_return_2A0B_when_guess_number_different_secret_number()
+        [Theory]
+        [InlineData("1536")]
+        [InlineData("5634")]
+        [InlineData("5236")]
+        [InlineData("1564")]
+        public void Should_return_2A0B_when_guess_number_different_secret_number(string guessNumber)
         {
-            var guessNumber = "1536";
             var secretNumber = "1234";
             // var secretGenerator = new SecretGenerator();
             var mockedSecretGenerator = new Mock<SecretGenerator>();
