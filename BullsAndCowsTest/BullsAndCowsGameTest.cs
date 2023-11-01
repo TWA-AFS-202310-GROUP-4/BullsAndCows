@@ -28,7 +28,7 @@ namespace BullsAndCowsTest
         [InlineData("1256")]
         [InlineData("7834")]
         [InlineData("5236")]
-        public void Should_return_2A0B_when_guess_given_position_partial_secretes(string guessString)
+        public void Should_return_2A0B_when_guess_given_digit_values_partial_correct_and_positions_partial_correct(string guessString)
         {
             //given
             var secret = "1234";
@@ -48,7 +48,7 @@ namespace BullsAndCowsTest
         [InlineData("1243")]
         [InlineData("2134")]
         [InlineData("1324")]
-        public void Should_return_2A2B_when_guess_given_all_digit_values_correct_but_positions_partial_correct(string guessString)
+        public void Should_return_2A2B_when_guess_given_all_digit_values_correct_but_positions_partial_incorrect(string guessString)
         {
             //given
             var secret = "1234";
@@ -88,7 +88,7 @@ namespace BullsAndCowsTest
         [InlineData("4356")]
         [InlineData("5612")]
         [InlineData("5128")]
-        public void Should_return_0A2B_when_guess_given_digit_values_partial_correct_and_positions_all_incorrect(string guessString)
+        public void Should_return_0A2B_when_guess_given_digit_values_partial_correct_but_positions_all_incorrect(string guessString)
         {
             //given
             var secret = "1234";
@@ -108,7 +108,7 @@ namespace BullsAndCowsTest
         [InlineData("4321")]
         [InlineData("2143")]
         [InlineData("3142")]
-        public void Should_return_0A4B_when_guess_given_digit_values_all_correct_and_positions_all_incorrect(string guessString)
+        public void Should_return_0A4B_when_guess_given_digit_values_all_correct_but_positions_all_incorrect(string guessString)
         {
             //given
             var secret = "1234";
