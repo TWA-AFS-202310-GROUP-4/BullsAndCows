@@ -78,5 +78,50 @@ namespace BullsAndCowsTest
 
             Assert.Equal("0A0B", ret);
         }
+
+        [Theory]
+        [InlineData("3469")]
+        public void Should_return_0A2B_when_guess_number_different_secret_number(string guessNumber)
+        {
+            var secretNumber = "1234";
+            // var secretGenerator = new SecretGenerator();
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secretNumber);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+
+            var ret = game.Guess(guessNumber);
+
+            Assert.Equal("0A2B", ret);
+        }
+
+        [Theory]
+        [InlineData("4312")]
+        public void Should_return_0A4B_when_guess_number_different_secret_number(string guessNumber)
+        {
+            var secretNumber = "1234";
+            // var secretGenerator = new SecretGenerator();
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secretNumber);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+
+            var ret = game.Guess(guessNumber);
+
+            Assert.Equal("0A4B", ret);
+        }
+
+        [Theory]
+        [InlineData("1432")]
+        public void Should_return_2A2B_when_guess_number_different_secret_number(string guessNumber)
+        {
+            var secretNumber = "1234";
+            // var secretGenerator = new SecretGenerator();
+            var mockedSecretGenerator = new Mock<SecretGenerator>();
+            mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secretNumber);
+            var game = new BullsAndCowsGame(mockedSecretGenerator.Object);
+
+            var ret = game.Guess(guessNumber);
+
+            Assert.Equal("2A2B", ret);
+        }
     }
 }
