@@ -25,12 +25,14 @@ namespace BullsAndCowsTest
         }
 
 
-        [Fact]
-        public void Should_return_2A0B_when_guess_given_position_and_digits_are_partially_same()
+        [Theory]
+        [InlineData("1234")]
+        [InlineData("1299")]
+        [InlineData("1279")]
+        public void Should_return_2A0B_when_guess_given_position_and_digits_are_partially_same(string secret)
         {
             //Given
             string guessNumber = "1258";
-            string secret = "1234";
 
             Mock<SecretGenerator> mockedSecretGenerator = new Mock<SecretGenerator>();
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secret);
