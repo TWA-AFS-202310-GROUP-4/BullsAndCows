@@ -26,17 +26,16 @@ namespace BullsAndCows
 
             for (int i = 0; i < guessString.Length; i++)
             {
-                if (guessString[i].Equals(secret[i]))
+                if (secret.Contains(guessString[i]))
                 {
-                    cows++;
-                }
-            }
-
-            for (int i = 0; i < guessString.Length; i++)
-            {
-                if (secret.Contains(guessString[i]) && !guessString[i].Equals(secret[i]))
-                {
-                    bulls++;
+                    if (guessString[i].Equals(secret[i]))
+                    {
+                        cows++;
+                    }
+                    else
+                    {
+                        bulls++;
+                    }
                 }
             }
 
