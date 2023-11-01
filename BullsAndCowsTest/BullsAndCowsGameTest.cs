@@ -37,7 +37,6 @@ namespace BullsAndCowsTest
             Assert.Equal(expectGuessResult, result);
         }
 
-        // 0A0B
         // 0A4B
         // 2A2B
         // 1A1B
@@ -48,6 +47,20 @@ namespace BullsAndCowsTest
         {
             string secret = "1234";
             var expectGuessResult = "0A0B";
+
+            mockedGenerator.Setup(x => x.GenerateSecret()).Returns(secret);
+
+            var game = new BullsAndCowsGame(mockedGenerator.Object);
+            var result = game.Guess(guessString);
+            Assert.Equal(expectGuessResult, result);
+        }
+        
+        [Theory]
+        [InlineData("4321")]
+        public void Should_return_0A4B_when_guess_given_0_correct_4_position_wrong(string guessString)
+        {
+            string secret = "1234";
+            var expectGuessResult = "0A4B";
 
             mockedGenerator.Setup(x => x.GenerateSecret()).Returns(secret);
 
