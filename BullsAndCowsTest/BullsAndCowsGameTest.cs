@@ -27,7 +27,7 @@ namespace BullsAndCowsTest
         [Theory]
         [InlineData("1256")]
         [InlineData("7834")]
-        [InlineData("5263")]
+        [InlineData("5236")]
         public void Should_return_2A0B_when_guess_given_position_partial_secretes(string guessString)
         {
             //given

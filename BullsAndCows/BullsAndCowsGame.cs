@@ -14,13 +14,24 @@ namespace BullsAndCows
 
         public bool CanContinue => true;
 
-        public string Guess(string guess)
+        public string Guess(string guessString)
         {
-            if (guess.Equals(secret))
+            int cows = 0;
+
+            if (guessString.Equals(secret))
             {
                 return "4A0B";
             }
-            return string.Empty;
+
+            for (int i = 0; i < guessString.Length; i++)
+            {
+                if (guessString[i].Equals(secret[i]))
+                {
+                    cows++;
+                }
+            }
+
+            return $"{cows}A0B";
         }
     }
 }
