@@ -6,15 +6,6 @@ namespace BullsAndCowsTest
 {
     public class BullsAndCowsGameTest
     {
-       /* [Fact]
-        public void Should_create_BullsAndCowsGame()
-        {
-            var secretGenerator = new SecretGenerator();
-            var game = new BullsAndCowsGame(secretGenerator);
-            Assert.NotNull(game);
-            Assert.True(game.CanContinue);
-        }*/
-
         [Fact]
         public void Should_return_4A0B_when_guess_number_and_secrete_are_same()
         {
@@ -33,12 +24,15 @@ namespace BullsAndCowsTest
             Assert.Equal("4A0B", result);
         }
 
-        [Fact]
-        public void Should_return_2A0B_when_guess_number_and_secrete_are_partially_same()
+        [Theory]
+        [InlineData("1256")]
+        [InlineData("5634")]
+        [InlineData("5236")]
+        [InlineData("1584")]
+        public void Should_return_2A0B_when_guess_number_and_secrete_are_partially_same(string guessNumber)
         {
             //Given
-            string guessNumber = "1212";
-            string secrete = "1288";
+            string secrete = "1234";
 
             Mock<SecretGenerator> mockedSecretGenerator = new Mock<SecretGenerator>();
             mockedSecretGenerator.Setup(generator => generator.GenerateSecret()).Returns(secrete);
