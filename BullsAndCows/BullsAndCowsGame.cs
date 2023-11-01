@@ -14,7 +14,13 @@ namespace BullsAndCows
 
         public string Guess(string guess)
         {
-            throw new NotImplementedException();
+            string secret = secretGenerator.GenerateSecret();
+            if (secret.Equals(guess))
+            {
+                return "4A0B";
+            }
+
+            return string.Empty;
         }
     }
 }
