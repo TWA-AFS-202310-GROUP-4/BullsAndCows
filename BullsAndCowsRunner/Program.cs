@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net.Sockets;
 using BullsAndCows;
+using Moq;
 
 namespace BullsAndCowsRunner
 {
@@ -7,8 +9,10 @@ namespace BullsAndCowsRunner
     {
         public static void Main(string[] args)
         {
-            SecretGenerator secretGenerator = new SecretGenerator();
-            BullsAndCowsGame game = new BullsAndCowsGame(secretGenerator);
+            Mock<SecretGenerator> mockGenerator = new Mock<SecretGenerator>();
+            mockGenerator.Setup(m => m.GenerateSecret()).Returns("1234");
+
+            BullsAndCowsGame game = new BullsAndCowsGame(mockGenerator.Object);
             while (game.CanContinue)
             {
                 var input = Console.ReadLine();
