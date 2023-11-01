@@ -18,9 +18,16 @@ namespace BullsAndCows
         public string Guess(string guess)
         {
             int x = 0, y = 0;
-            if (guess.Equals(this.secret))
+            for (int i = 0; i < guess.Length; i++)
             {
-                x = 4;
+                if (guess[i] == this.secret[i])
+                {
+                    x++;
+                }
+                else if (this.secret.IndexOf(guess[i]) >= 0)
+                {
+                    y++;
+                }
             }
 
             return $"{x}A{y}B";
