@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace BullsAndCows
 {
@@ -6,7 +7,8 @@ namespace BullsAndCows
     {
         public virtual string GenerateSecret()
         {
-            throw new NotImplementedException();
+            Random rnd = new Random();
+            return new string(Enumerable.Range(0, 10).OrderBy(r => rnd.Next()).Take(4).Select(i => i.ToString()[0]).ToArray());
         }
     }
 }
