@@ -66,7 +66,7 @@ namespace BullsAndCowsTest
 
         [Theory]
         [InlineData("5678")]
-        public void Should_return_0A0B_when_guess_number_and_secrete_are_partially_same(string guessNumber)
+        public void Should_return_0A0B_when_guess_number_and_secrete_are_not_same(string guessNumber)
         {
             //Given
             string secrete = "1234";
