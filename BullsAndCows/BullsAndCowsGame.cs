@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace BullsAndCows
 {
@@ -17,7 +18,7 @@ namespace BullsAndCows
         public string Guess(string guessString)
         {
             int cows = 0;
-
+            int bulls = 0;
             if (guessString.Equals(secret))
             {
                 return "4A0B";
@@ -31,7 +32,15 @@ namespace BullsAndCows
                 }
             }
 
-            return $"{cows}A0B";
+            for (int i = 0; i < guessString.Length; i++)
+            {
+                if (secret.Contains(guessString[i]) && !guessString[i].Equals(secret[i]))
+                {
+                    bulls++;
+                }
+            }
+
+            return $"{cows}A{bulls}B";
         }
     }
 }
