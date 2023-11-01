@@ -20,7 +20,17 @@ namespace BullsAndCows
                 return "4A0B";
             }
 
-            return string.Empty;
+            int bulls = 0;
+
+            for (int i = 0; i < secret.Length; i++)
+            {
+                if (secret[i] == guess[i])
+                {
+                    bulls++;
+                }
+            }
+
+            return $"{bulls}A0B";
         }
     }
 }
